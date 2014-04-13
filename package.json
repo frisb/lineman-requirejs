@@ -1,0 +1,40 @@
+{
+  "name": "lineman-requirejs",
+  "description": "A requirejs plugin for Lineman",
+  "version": "0.0.1",
+  "homepage": "https://github.com/frisB/lineman-requirejs",
+  "author": {
+	  "name": "ashley brener",
+	  "email": "ashley@frisb.com",
+	  "url": "www.frisb.com"
+	},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/frisB/lineman-requirejs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/frisB/lineman-requirejs/issues"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "requirejs": "~2.1.0",
+    "grunt-contrib-requirejs": "~0.4.3"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.4"
+  },
+  "peerDependencies": {
+    "lineman": ">= 0.19.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://frisb.mit-license.org"
+    }
+  ],
+  "keywords": [
+    "lineman",
+    "linemanplugin",
+    "requirejs"
+  ]
+}
