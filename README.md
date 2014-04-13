@@ -14,7 +14,7 @@ contributions are welcome of course.
 ## installation
 
 ```
-  npm install lineman-requirejs
+  npm install lineman-requirejs --save-dev
 ```
 
 ## enjoy :)
