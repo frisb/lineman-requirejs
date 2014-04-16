@@ -5,7 +5,7 @@ lineman-requirejs
 
 This is a plugin to get started with require.js using
 
-[Lineman](http://linemanjs.com). 
+[Lineman](http://linemanjs.com).
 
 lineman-requirejs is a work in progress and functionality and examples will be provided shortly.
 
@@ -46,3 +46,5 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
 CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+[![Analytics](https://ga-beacon.appspot.com/UA-40562957-2/lineman-requirejs/readme)](https://github.com/igrigorik/ga-beacon)
