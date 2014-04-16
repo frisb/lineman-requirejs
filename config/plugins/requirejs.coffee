@@ -1,35 +1,36 @@
 module.exports = (lineman) ->
   baseConfig = lineman.config.application
-  
-  delete baseConfig.watch.js
-  delete baseConfig.watch.coffee
-  
-  files:
-    require:
-      baseUrl: "generated/js"
-      src: "<%= files.require.baseUrl %>/main-*.js"
-  
+
+  filesToCopy = [
+    expand: true
+    cwd: "app/requirejs"
+    src: [
+      "**/*.*"
+      "!**/*.coffee"
+    ]
+    dest: 'generated/requirejs'
+  ]
+
   config:
     loadNpmTasks: baseConfig.loadNpmTasks.concat('grunt-contrib-requirejs')
-    
-    removeTasks:
-      common: baseConfig.removeTasks.common.concat('concat_sourcemap')
-      dist: baseConfig.removeTasks.dist.concat('uglify')
-      
-    watch: baseConfig
-      
+
+    prependTasks:
+      dev: baseConfig.prependTasks.dev.concat('almond:dev')
+
+    appendTasks:
+      dist: baseConfig.appendTasks.dist.concat('almond:dist')
+
+    watch:
+      require:
+        files: ["<%= files.almond.js %>"]
+        tasks: ["almond"]
+
     copy:
-      dev: 
-        files: baseConfig.copy.dev.files.concat [
-          expand: true
-          cwd: "app/js"
-          src: [
-            "**/*.*"
-            "!**/*.coffee"
-          ]
-          dest: 'generated/js'
-        ]
-      
+      dev:
+        files: baseConfig.copy.dev.files.concat(filesToCopy)
+      dist:
+        files: baseConfig.copy.dist.files.concat(filesToCopy)
+
     coffee:
       compile:
         options:
@@ -37,41 +38,36 @@ module.exports = (lineman) ->
           join: false
         files: [
           expand: true
-          cwd: "app/js"
+          cwd: "app/requirejs"
           src: "**/*.coffee"
-          dest: 'generated/js'
+          dest: 'generated/requirejs'
           ext: '.js'
           extDot: 'first'
         ]
-  
-    require:
+
+    almond:
       dev:
         files:
-          "generated/js": "<%= files.require.src %>"
+          "generated/js": "<%= files.almond.src %>"
         context:
           optimize: "none"
       dist:
         files:
-          "dist/js": "<%= files.require.src %>"
+          "dist/js": "<%= files.almond.src %>"
         context:
           optimize: "uglify2"
-      
+
     requirejs:
       options:
-        baseUrl: "<%= files.require.baseUrl %>"
+        baseUrl: "<%= files.almond.baseUrl %>"
         name: '../../node_modules/lineman-requirejs/lib/almond'
         paths:
             'config': 'configs/en'
         preserveLicenseComments: false,
         skipDirOptimize: true
         generateSourceMaps: true
-        wrap: true 
+        wrap: true
         findNestedDependencies: true
-        logLevel: 0
+        logLevel: 2
         pragmas:
           stamp: true
-        done: (done, output) ->
-          #lineman.grunt.log.subhead 'done <%= files.require.mainConfigFile %>'
-            #done(new Error('r.js built duplicate modules, please check the excludes option.'));
-          
-          done()
