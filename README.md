@@ -3,9 +3,7 @@ lineman-requirejs
 
 [![npm status badge](https://nodei.co/npm/lineman-requirejs.png?stars=true&downloads=true)](https://nodei.co/npm/lineman-requirejs/)
 
-This is a plugin to get started with require.js using
-
-[Lineman](http://linemanjs.com).
+This is a require.js plugin for [Lineman](http://linemanjs.com).
 
 lineman-requirejs is a work in progress and functionality and examples will be provided shortly.
 

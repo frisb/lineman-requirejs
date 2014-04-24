@@ -1,7 +1,9 @@
 module.exports = (grunt) ->
   path = require('path')
 
-  grunt.registerMultiTask "almond", "generates almond", ->
+  grunt.renameTask('requirejs', 'almond')
+
+  grunt.registerMultiTask 'requirejs', 'generates almond', ->
     context = @data.context
 
     for filePair in @files
@@ -27,7 +29,7 @@ module.exports = (grunt) ->
               done()
         }
 
-        grunt.config.set('requirejs.' + appName, config)
-		    grunt.task.run(['requirejs'])
+        grunt.config.set('almond.' + appName, config)
 
+      grunt.task.run(['almond'])
       grunt.log.writeln(appList)
