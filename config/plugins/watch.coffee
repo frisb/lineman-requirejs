@@ -7,4 +7,4 @@ module.exports = (lineman) ->
         files: baseConfig.watch.coffee.files.concat('!<%= files.requirejs.app %>')
       requirejs:
         files: ['<%= files.requirejs.app %>/**/*.*']
-        tasks: ['coffee', 'jshint', 'copy:dev', 'requirejs:dev']
+        tasks: ['coffee', 'copy:dev', 'requirejs:dev']

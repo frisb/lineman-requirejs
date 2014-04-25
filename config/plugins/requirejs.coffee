@@ -12,10 +12,10 @@ module.exports = (lineman) ->
       dev:
         files:
           'generated/js': '<%= files.requirejs.src %>'
-        context:
+        options:
           optimize: 'none'
       dist:
         files:
           'dist/js': '<%= files.requirejs.src %>'
-        context:
+        options:
           optimize: 'uglify2'
