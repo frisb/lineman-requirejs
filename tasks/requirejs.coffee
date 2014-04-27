@@ -12,7 +12,7 @@ module.exports = (grunt) ->
 
     common = @data.options
 
-    optimize = (target, src, dest) ->
+    optimize = (src, dest) ->
       fileBaseName = path.basename(src, '.js')
       appName = fileBaseName.replace('main-', '')
       appList += (if appList.length == 0 then '' else ', ') + appName
@@ -35,9 +35,9 @@ module.exports = (grunt) ->
 
     for filePair in @files
       dest = filePair.dest
-
+      
       for src in filePair.src
-        optimize(@target, src, dest, @data.options)
+        optimize(src, dest)
 
       grunt.log.writeln('Generating ' + appList)
       grunt.task.run(['optimize'])
