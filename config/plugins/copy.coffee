@@ -1,5 +1,5 @@
 module.exports = (lineman) ->
-  baseConfig = lineman.config.application
+  copy = lineman.config.application.copy
 
   nonCoffeeFiles = [
     expand: true
@@ -11,9 +11,13 @@ module.exports = (lineman) ->
     dest: '<%= files.requirejs.generated %>'
   ]
 
+  requireJsLib =
+    src: 'node_modules/lineman-requirejs/lib/requirejs-min.js'
+    dest: 'generated/js/requirejs-min.js'
+
   config:
     copy:
       dev:
-        files: baseConfig.copy.dev.files.concat(nonCoffeeFiles)
+        files: copy.dev.files.concat(nonCoffeeFiles).concat(requireJsLib)
       dist:
-        files: baseConfig.copy.dist.files.concat(nonCoffeeFiles)
+        files: copy.dist.files.concat(nonCoffeeFiles)
