@@ -12,8 +12,8 @@ module.exports = (lineman) ->
   ]
 
   requireJsLib =
-    src: 'node_modules/lineman-requirejs/lib/requirejs-min.js'
-    dest: 'generated/js/requirejs-min.js'
+    src: 'node_modules/lineman-requirejs/lib/require-min.js'
+    dest: 'generated/js/require-min.js'
 
   config:
     copy:

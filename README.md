@@ -15,9 +15,6 @@ contributions are welcome of course.
   npm install lineman-requirejs --save-dev
 ```
 
-#### the frisB.com team ( [ring the world](http://www.frisb.com "frisB.com") )
-
-
 ## License
 
 (The MIT License)

@@ -1,7 +1,7 @@
 module.exports =
   files:
     requirejs:
-      app: 'app/js/require'
-      generated: 'generated/js/require'
-      src: '<%= files.requirejs.generated %>/main*.js'
-      almond: '../../../node_modules/lineman-requirejs/lib/almond'
+      app: 'app/amd'
+      generated: 'generated/js'
+      src: '<%= files.requirejs.generated %>/main-*.js'
+      almond: '../../node_modules/lineman-requirejs/lib/almond'

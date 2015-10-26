@@ -1,8 +1,6 @@
 module.exports = (grunt) ->
-  _ = require('lodash')
+  chalk = require('chalk')
   path = require('path')
-  appList = null
-  start = null
 
   grunt.renameTask('requirejs', 'optimize')
 
@@ -10,32 +8,28 @@ module.exports = (grunt) ->
     appList = ''
     start = new Date()
 
-    common = @data.options
-
-    optimize = (src, dest) ->
+    optimize = (src, dest) =>
       fileBaseName = path.basename(src, '.js')
       appName = fileBaseName.replace('main-', '')
+      destFile = dest + '/' + appName + '.js'
       appList += (if appList.length == 0 then '' else ', ') + appName
 
       config =
-        options: extend
+        options: @options
           mainConfigFile: src
           include: [ fileBaseName ]
-          out:  dest + '/' + appName + '.js'
+          out:  destFile
           done: (done, output) ->
             time = (new Date() - start) / 1000
-            grunt.log.writeln('File ' + src + ' created in ' + time + 's.')
+            grunt.log.writeln('File ' + chalk.magenta(destFile) + ' created in ' + time + 's.')
             start = new Date()
             done()
 
       grunt.config.set('optimize.' + appName, config)
 
-    extend = (custom) ->
-      _.extend({}, common, custom)
-
     for filePair in @files
       dest = filePair.dest
-      
+
       for src in filePair.src
         optimize(src, dest)
 
